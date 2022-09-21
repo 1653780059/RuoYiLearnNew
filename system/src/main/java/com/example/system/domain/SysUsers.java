@@ -26,6 +26,8 @@ public class SysUsers implements Serializable {
      */
     @TableId(type = IdType.AUTO)
     private Integer id;
+    @TableField(exist = false)
+    private String verification;
 
     /**
      * 用户名

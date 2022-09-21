@@ -5,6 +5,7 @@ import com.example.common.constants.RedisConstants;
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.result.Result;
 import com.example.common.utils.JwtUtils;
+import com.example.common.utils.ServletUtils;
 import com.example.system.domain.LoginDetails;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,20 @@ public class SysLoginServiceImpl implements SysLoginService {
     @Autowired
     AuthenticationManager authenticationManager;
     @Override
-    public Result login(Optional<String> username, Optional<String> password) {
+    public Result login(Optional<String> username, Optional<String> password,Optional<String> verification) {
         if(!username.isPresent()||!password.isPresent()){
            throw new RuntimeException("用户名密码不能为空");
+        }
+        if(!verification.isPresent()){
+            throw new RuntimeException("验证码不可为空");
+        }
+        String verificationKey=RedisConstants.LOGIN_VERIFICATION_PREFIX+ ServletUtils.getLoginUUID();
+        String s = stringRedisTemplate.opsForValue().get(verificationKey);
+        if(s==null){
+            throw new RuntimeException("验证码已过期，请刷新");
+        }
+        if(!verification.get().equals(s)){
+            throw new RuntimeException("验证码错误");
         }
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username.get(),password.get());
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);

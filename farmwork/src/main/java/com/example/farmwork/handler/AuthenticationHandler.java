@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * @Classname AuthenticationHandler
- * @Description
+ * @Description 认证错误信息处理
  * @Version 1.0.0
  * @Date 2022/9/20 14:05
  * @Created by 16537

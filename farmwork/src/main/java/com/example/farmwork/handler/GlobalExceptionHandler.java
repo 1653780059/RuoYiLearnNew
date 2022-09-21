@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Classname SpringBootExceptionHandler
- * @Description
+ * @Description 全局异常处理
  * @Version 1.0.0
  * @Date 2022/9/20 14:03
  * @Created by 16537
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(Throwable.class)
     @ResponseBody
-    public Result ExceptionHandler(Exception e){
+    public Result ExceptionHandler(Throwable e){
         return new Result().no(e);
     }
 }

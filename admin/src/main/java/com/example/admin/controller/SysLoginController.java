@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 /**
+ * @author 16537
  * @Classname SysLoginController
  * @Description
  * @Version 1.0.0
@@ -40,7 +41,7 @@ public class SysLoginController {
     @PostMapping("/login")
     public Result userLogin(@RequestBody SysUsers user){
 
-        return loginService.login(Optional.ofNullable(user.getUsername()),Optional.ofNullable(user.getPassword()));
+        return loginService.login(Optional.ofNullable(user.getUsername()),Optional.ofNullable(user.getPassword()),Optional.ofNullable(user.getVerification()));
     }
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/hello")

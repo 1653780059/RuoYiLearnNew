@@ -64,7 +64,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             String key = RedisConstants.LOGIN_USER_PREFIX+loginDetails.getToken();
             String jsonStr = JSONUtil.toJsonStr(loginDetails);
-            stringRedisTemplate.opsForValue().set(key,jsonStr,20, TimeUnit.MINUTES);
+            stringRedisTemplate.opsForValue().set(key,jsonStr,RedisConstants.LOGIN_EXPIRATION_TIME, TimeUnit.MINUTES);
         };
         //转成json
         loginDetails.setPermission(sysUsersMapper.getPermission(sysUsers.get().getId()));
@@ -96,7 +96,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 stringRedisTemplate.opsForValue().set(key,"1");
             }
             if(RedisConstants.MAX_FAIL_COUNT<Integer.parseInt(stringRedisTemplate.opsForValue().get(key))){
-                stringRedisTemplate.expire(key,10,TimeUnit.MINUTES);
+                stringRedisTemplate.expire(key,RedisConstants.ALLOW_TRY_AGAIN_TIME,TimeUnit.MINUTES);
                 throw new MaxLoginFailException("登录失败,次数过多用户已锁定,十分钟后重试");
             }
         }else {
