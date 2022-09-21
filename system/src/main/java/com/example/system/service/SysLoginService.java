@@ -12,5 +12,5 @@ import java.util.Optional;
  * @Created by 16537
  */
 public interface SysLoginService {
-    Result login(Optional<String> username, Optional<String> password,Optional<String> verification);
+    Result login(String username,String password,String verification);
 }

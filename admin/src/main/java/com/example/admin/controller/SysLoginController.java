@@ -41,7 +41,7 @@ public class SysLoginController {
     @PostMapping("/login")
     public Result userLogin(@RequestBody SysUsers user){
 
-        return loginService.login(Optional.ofNullable(user.getUsername()),Optional.ofNullable(user.getPassword()),Optional.ofNullable(user.getVerification()));
+        return loginService.login(user.getUsername(),user.getPassword(),user.getVerification());
     }
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/hello")

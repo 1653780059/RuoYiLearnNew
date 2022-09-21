@@ -31,11 +31,11 @@ public class SysLoginServiceImpl implements SysLoginService {
     @Autowired
     AuthenticationManager authenticationManager;
     @Override
-    public Result login(Optional<String> username, Optional<String> password,Optional<String> verification) {
-        if(!username.isPresent()||!password.isPresent()){
+    public Result login(String username, String password,String verification) {
+        if(username==null||password==null){
            throw new RuntimeException("用户名密码不能为空");
         }
-        if(!verification.isPresent()){
+        if(verification==null){
             throw new RuntimeException("验证码不可为空");
         }
         String verificationKey=RedisConstants.LOGIN_VERIFICATION_PREFIX+ ServletUtils.getLoginUUID();
@@ -43,10 +43,10 @@ public class SysLoginServiceImpl implements SysLoginService {
         if(s==null){
             throw new RuntimeException("验证码已过期，请刷新");
         }
-        if(!verification.get().equals(s)){
+        if(!verification.equals(s)){
             throw new RuntimeException("验证码错误");
         }
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username.get(),password.get());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username,password);
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         AuthenticationHolder.setToken(usernamePasswordAuthenticationToken);
         LoginDetails loginDetails = (LoginDetails) authenticate.getPrincipal();
