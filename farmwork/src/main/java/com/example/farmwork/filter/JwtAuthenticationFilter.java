@@ -3,6 +3,7 @@ package com.example.farmwork.filter;
 import cn.hutool.json.JSONUtil;
 import com.example.common.constants.RedisConstants;
 import com.example.common.utils.JwtUtils;
+import com.example.farmwork.utils.SecurityUtils;
 import com.example.system.domain.LoginDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -45,7 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             redisTemplate.expire(key,20, TimeUnit.MINUTES);
             LoginDetails loginDetails = (LoginDetails)JSONUtil.toBean(optionalS.get(), LoginDetails.class, true);
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginDetails,null,loginDetails.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            SecurityUtils.setAuthentication(usernamePasswordAuthenticationToken);
 
         }
         filterChain.doFilter(request,response);

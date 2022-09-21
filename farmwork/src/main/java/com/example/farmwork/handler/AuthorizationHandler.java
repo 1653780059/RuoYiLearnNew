@@ -1,5 +1,6 @@
 package com.example.farmwork.handler;
 
+import com.example.farmwork.utils.SecurityUtils;
 import com.example.system.domain.LoginDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * @Classname Authorization
- * @Description
+ * @Description 授权处理器
  * @Version 1.0.0
  * @Date 2022/9/20 16:37
  * @Created by 16537
@@ -18,8 +19,8 @@ import java.util.stream.Collectors;
 @Service("a")
 public class AuthorizationHandler{
     public boolean hasPer(String permission){
-        LoginDetails loginDetails = (LoginDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<String> permission1 = loginDetails.getPermission();
+
+        List<String> permission1 = SecurityUtils.getPermission();
         List<String> collect = permission1.stream().filter(per -> per.equals(permission)).collect(Collectors.toList());
         if(collect.isEmpty()){
             return false;
