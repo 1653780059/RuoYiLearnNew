@@ -47,13 +47,10 @@ public class SysLoginServiceImpl implements SysLoginService {
             throw new RuntimeException("验证码错误");
         }
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username,password);
-        Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         AuthenticationHolder.setToken(usernamePasswordAuthenticationToken);
+        Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         LoginDetails loginDetails = (LoginDetails) authenticate.getPrincipal();
         String token = JwtUtils.getToken(loginDetails.getToken());
-        String key = RedisConstants.LOGIN_USER_PREFIX+loginDetails.getToken();
-        String jsonStr = JSONUtil.toJsonStr(loginDetails);
-        stringRedisTemplate.opsForValue().set(key,jsonStr);
         return new Result().ok(token);
 
     }

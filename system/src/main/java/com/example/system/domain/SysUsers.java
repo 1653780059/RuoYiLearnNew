@@ -38,7 +38,7 @@ public class SysUsers implements Serializable {
      * 密码
      */
 
-    private String password;
+    private transient String password;
 
 
 

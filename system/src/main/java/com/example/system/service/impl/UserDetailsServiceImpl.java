@@ -4,6 +4,7 @@ package com.example.system.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONConfig;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.example.common.constants.RedisConstants;
@@ -48,7 +49,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if(Objects.equals(sysUsers.get().getValid(), AccountStates.DISABLE.getType())){
           throw new RuntimeException("用户被禁用");
         }
-        String failKey = RedisConstants.LOGIN_FAIL_PREFIX+ ServletUtils.getLoginUUID();
+        String uuid = UUID.randomUUID().toString();
+        String failKey = RedisConstants.LOGIN_FAIL_PREFIX+ username;
         if(stringRedisTemplate.opsForValue().get(failKey)!=null){
             if(RedisConstants.MAX_FAIL_COUNT<Integer.parseInt(stringRedisTemplate.opsForValue().get(failKey))){
                 Long expire = stringRedisTemplate.getExpire(failKey);
@@ -58,17 +60,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         LoginDetails loginDetails = new LoginDetails();
         loginDetails.setSysUsers(sysUsers.get());
-        loginDetails.setToken(UUID.randomUUID().toString());
         //重试次数限制
-        if(matchPassword(AuthenticationHolder.getPassword(),sysUsers.get().getPassword(),loginDetails,failKey)){
-
+        if(matchPassword(AuthenticationHolder.getPassword(),sysUsers.get().getPassword(),failKey)){
+            loginDetails.setToken(uuid);
             String key = RedisConstants.LOGIN_USER_PREFIX+loginDetails.getToken();
-            String jsonStr = JSONUtil.toJsonStr(loginDetails);
+            loginDetails.setPermission(sysUsersMapper.getPermission(sysUsers.get().getId()));
+            String jsonStr = JSONUtil.toJsonStr(loginDetails,new JSONConfig().setIgnoreNullValue(true).setIgnoreError(true));
             stringRedisTemplate.opsForValue().set(key,jsonStr,RedisConstants.LOGIN_EXPIRATION_TIME, TimeUnit.MINUTES);
         };
-        //转成json
-        loginDetails.setPermission(sysUsersMapper.getPermission(sysUsers.get().getId()));
-
         return loginDetails;
 
     }
@@ -84,7 +83,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param loginDetails 用户详细信息
      * @param key   登录失败redis计数的key
      */
-    private Boolean matchPassword(String loginPassword, String userPassword, LoginDetails loginDetails,String key) {
+    private Boolean matchPassword(String loginPassword, String userPassword, String key) {
         boolean matches = passwordEncoder.matches(loginPassword, userPassword);
 
         if(!matches){
