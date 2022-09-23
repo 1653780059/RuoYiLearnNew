@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,8 +30,9 @@ public class MVCConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost")
-
+                .allowedOrigins("*")
+                .allowedHeaders("*")
+                .allowedMethods("*")
                 .allowCredentials(true);
     }
 
@@ -73,7 +75,7 @@ public class MVCConfig implements WebMvcConfigurer {
         fastJsonConverter.setSupportedMediaTypes(supportedMediaTypes);
 
         //添加StringHttpMessageConverter，解决中文乱码问题
-        StringHttpMessageConverter stringConverter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        StringHttpMessageConverter stringConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
         List<MediaType> mediaTypes = Collections.singletonList(MediaType.APPLICATION_JSON_UTF8);
         stringConverter.setSupportedMediaTypes(mediaTypes);
 
