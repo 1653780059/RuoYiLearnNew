@@ -1,5 +1,6 @@
 package com.example.admin;
 
+import com.example.common.config.LearnConfig;
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.utils.JwtUtils;
 import com.example.system.mapper.SysUsersMapper;
@@ -33,6 +34,10 @@ class AdminApplicationTests {
     void testJWT(){
         System.out.println(JwtUtils.getToken("123"));
         System.out.println(JwtUtils.parseToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IjEyMyJ9.OGVf7WFueztOv1kchEIjpOYLmnU5RgyK1adimeGBlg8"));
+
+    }
+    @Test
+    void test(){
 
     }
 

@@ -1,12 +1,8 @@
 package com.example.common.utils;
-
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.druid.util.StringUtils;
 import com.example.common.config.LearnConfig;
 import com.example.common.constants.FileConstants;
-import io.swagger.models.auth.In;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
