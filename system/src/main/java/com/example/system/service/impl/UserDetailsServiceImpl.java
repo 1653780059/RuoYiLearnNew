@@ -38,13 +38,16 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     SysUsersMapper sysUsersMapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<SysUsers> sysUsers = sysUsersMapper.loadUserByUsername(username);
         if (!sysUsers.isPresent()||Objects.equals(sysUsers.get().getValid(),AccountStates.OFF.getType())) {
-            throw new UsernameNotFoundException("用户名不存在");
+            String key=RedisConstants.USER_NOT_FOUND+username;
+            stringRedisTemplate.opsForValue().set(key,"",RedisConstants.USER_NOT_FOUND_EXPIRATION_TIME,TimeUnit.MINUTES);
+            throw new UsernameNotFoundException("用户名未注册请先注册");
         }
         if(Objects.equals(sysUsers.get().getValid(), AccountStates.DISABLE.getType())){
           throw new RuntimeException("用户被禁用");

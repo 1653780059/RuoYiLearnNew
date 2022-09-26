@@ -32,6 +32,10 @@ public class SysLoginServiceImpl implements SysLoginService {
     AuthenticationManager authenticationManager;
     @Override
     public Result login(String username, String password,String verification) {
+        String key=RedisConstants.USER_NOT_FOUND+username;
+        if(stringRedisTemplate.opsForValue().get(key)!=null){
+            throw new RuntimeException("用户未注册请先注册");
+        }
         if(username==null||password==null){
            throw new RuntimeException("用户名密码不能为空");
         }

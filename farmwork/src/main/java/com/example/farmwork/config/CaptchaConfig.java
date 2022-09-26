@@ -18,6 +18,7 @@ import static com.google.code.kaptcha.Constants.*;
  * @Date 2022/9/21 14:39
  */
 @Configuration
+
 public class CaptchaConfig {
     @Bean
     public DefaultKaptcha defaultKaptcha(){

@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2022/9/20 9:17
  * @Created by 16537
  */
+
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
@@ -43,7 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 filterChain.doFilter(request,response);
                 return;
             }
-            redisTemplate.expire(key,20, TimeUnit.MINUTES);
+            redisTemplate.expire(key,RedisConstants.LOGIN_EXPIRATION_TIME, TimeUnit.MINUTES);
             LoginDetails loginDetails = (LoginDetails)JSONUtil.toBean(optionalS.get(), LoginDetails.class, true);
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginDetails,null,loginDetails.getAuthorities());
             SecurityUtils.setAuthentication(usernamePasswordAuthenticationToken);

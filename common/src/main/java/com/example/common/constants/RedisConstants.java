@@ -18,4 +18,6 @@ public final class RedisConstants {
     public static final Integer ALLOW_TRY_AGAIN_TIME=10;
     public static final Integer LOGIN_EXPIRATION_TIME=20;
     public static final Integer VERIFICATION_EXPIRATION_TIME = 5;
+    public static final String USER_NOT_FOUND = "login:notfound:";
+    public static final Integer USER_NOT_FOUND_EXPIRATION_TIME = 3;
 }

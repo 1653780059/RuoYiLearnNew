@@ -24,5 +24,15 @@ public class ServletUtils {
     public static String getLoginUUID(){
         return getRequest().getHeader("uuid");
     }
+    public static String getParam(String param){
+        return getRequest().getParameter(param);
+    }
+    public static String getParam(String param,String defaultValue){
+        String parameter = getRequest().getParameter(param);
+        if(parameter==null){
+            return defaultValue;
+        }
+        return parameter;
+    }
 
 }

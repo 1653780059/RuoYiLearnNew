@@ -24,6 +24,10 @@
 
         <!--        系统功能-->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.example</groupId>
             <artifactId>system</artifactId>
             <version>0.0.1-SNAPSHOT</version>

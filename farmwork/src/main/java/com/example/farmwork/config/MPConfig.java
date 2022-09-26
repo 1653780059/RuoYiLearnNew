@@ -2,6 +2,7 @@ package com.example.farmwork.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.Date;
  * @Version 1.0.0
  * @Date 2022/9/22 11:07
  */
+@Configuration
 public class MPConfig implements MetaObjectHandler {
 
     @Override
