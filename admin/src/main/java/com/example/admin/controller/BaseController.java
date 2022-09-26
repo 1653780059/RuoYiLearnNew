@@ -20,7 +20,7 @@ public class BaseController {
     @InitBinder
     public void initBinderDate(WebDataBinder webDataBinder){
         webDataBinder.registerCustomEditor(String.class,new StringTrimmerEditor(true));
-        webDataBinder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("yyyy/MM/dd"),false));
+        webDataBinder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"),false));
     }
     public void startPage(){
         PageUtils.startPage();

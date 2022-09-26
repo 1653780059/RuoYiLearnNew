@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ import java.util.List;
  * @Date 2022/9/26 9:35
  */
 @RestController
-@RequestMapping("/sys")
+@RequestMapping("/menu")
 public class SysMenusController extends BaseController{
     @Autowired
     SysMenusMapper sysMenusMapper;
@@ -33,5 +35,10 @@ public class SysMenusController extends BaseController{
         startPage();
         List<SysMenus> sysUsers = sysMenusMapper.selectList(new QueryWrapper<>());
         return new Result().ok(sysUsers);
+    }
+    @PreAuthorize("@a.hasPer('sys:menu:delete')")
+    @GetMapping("/test/{date}")
+    public Result test(@PathVariable("date") Date date){
+        return new Result().ok(date);
     }
 }
