@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.SysMenusMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.system.domain.SysMenus">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="INTEGER"/>
+            <result property="sort" column="sort" jdbcType="INTEGER"/>
+            <result property="note" column="note" jdbcType="VARCHAR"/>
+            <result property="parentid" column="parentId" jdbcType="INTEGER"/>
+            <result property="permission" column="permission" jdbcType="VARCHAR"/>
+            <result property="createdtime" column="createdTime" jdbcType="TIMESTAMP"/>
+            <result property="modifiedtime" column="modifiedTime" jdbcType="TIMESTAMP"/>
+            <result property="createduser" column="createdUser" jdbcType="VARCHAR"/>
+            <result property="modifieduser" column="modifiedUser" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,url,
+        type,sort,note,
+        parentId,permission,createdTime,
+        modifiedTime,createdUser,modifiedUser
+    </sql>
+</mapper>
