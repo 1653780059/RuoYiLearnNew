@@ -15,6 +15,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
  */
 
 public class JwtUtils {
+    /**
+     * jwt秘钥
+     */
     private static String key="wisu3i$2s@slxiggjiwalsk*woesj(ewisk";
     public static String getToken(String data){
         return JWT.create().withClaim("token", data).sign(Algorithm.HMAC256(key));

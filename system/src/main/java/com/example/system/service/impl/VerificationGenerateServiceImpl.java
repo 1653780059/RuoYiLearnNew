@@ -33,6 +33,11 @@ public class VerificationGenerateServiceImpl implements VerificationGenerateServ
     Producer producer;
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+    /**
+     * 获取验证码，保存验证码结果到redis
+     * @return 验证码图片流，验证码匹配的uuid
+     */
     @Override
     public Result verificationGenerate() {
         Map<String,Object> map = new HashMap<>();

@@ -33,7 +33,7 @@ import java.util.Optional;
 public class SysLoginController {
     /**
      * 登录逻辑
-     * 需要前端配合传入uuid 头
+     * 需要前端配合传入uuid头，以获取验证码
      * 以便做用户登录次数限制
      */
     @Autowired

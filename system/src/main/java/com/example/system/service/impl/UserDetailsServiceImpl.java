@@ -41,6 +41,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     SysUsersMapper sysUsersMapper;
+
+    /**
+     * 根据用户名获取对象
+     * @param username 用户名
+     * @return 根据用户名获取用户信息
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<SysUsers> sysUsers = sysUsersMapper.loadUserByUsername(username);

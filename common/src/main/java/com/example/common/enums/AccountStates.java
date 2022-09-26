@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Classname LoginStates
- * @Description
+ * @Description 账户状态枚举
  * @Version 1.0.0
  * @Date 2022/9/20 13:31
  * @Created by 16537

@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * @author 16537
  * @Classname MPConfig
- * @Description
+ * @Description 字段值自动注入
  * @Version 1.0.0
  * @Date 2022/9/22 11:07
  */

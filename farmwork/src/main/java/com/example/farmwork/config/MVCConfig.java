@@ -27,6 +27,10 @@ import java.util.List;
  */
 @Configuration
 public class MVCConfig implements WebMvcConfigurer {
+    /**
+     * 跨域放行
+     * @param registry
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -36,6 +40,10 @@ public class MVCConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
+    /**
+     * fastjson
+     * @param converters
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         WebMvcConfigurer.super.configureMessageConverters(converters);

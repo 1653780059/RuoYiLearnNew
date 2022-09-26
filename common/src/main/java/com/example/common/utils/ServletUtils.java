@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
  * @Created by 16537
  */
 public class ServletUtils {
-    public static ServletRequestAttributes getRequestAttributes(){
+    private static ServletRequestAttributes getRequestAttributes(){
         return (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     }
-    public static HttpServletRequest getRequest(){
+    private static HttpServletRequest getRequest(){
         return getRequestAttributes().getRequest();
     }
     public static String getLoginUUID(){
@@ -35,4 +35,12 @@ public class ServletUtils {
         return parameter;
     }
 
+    public static String getURL() {
+
+        return getRequest().getRequestURL().toString();
+    }
+
+    public static String getURI() {
+        return getRequest().getRequestURI();
+    }
 }

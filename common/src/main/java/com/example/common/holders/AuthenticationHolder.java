@@ -5,7 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 /**
  * @Classname AuthenticationHolder
- * @Description
+ * @Description 登录令牌保存
  * @Version 1.0.0
  * @Date 2022/9/20 9:36
  * @Created by 16537

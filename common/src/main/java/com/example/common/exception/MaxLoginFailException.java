@@ -2,7 +2,7 @@ package com.example.common.exception;
 
 /**
  * @Classname PasswordErrorException
- * @Description
+ * @Description 最大失败次数异常
  * @Version 1.0.0
  * @Date 2022/9/20 10:08
  * @Created by 16537

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @Classname LoginDetails
- * @Description
+ * @Description 用户信息封装
  * @Version 1.0.0
  * @Date 2022/9/19 16:27
  * @Created by 16537

@@ -29,6 +29,11 @@ import java.util.List;
 public class SysMenusController extends BaseController{
     @Autowired
     SysMenusMapper sysMenusMapper;
+
+    /**
+     * 获取菜单列表
+     * @return 菜单列表
+     */
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/list")
     public Result getList(){
