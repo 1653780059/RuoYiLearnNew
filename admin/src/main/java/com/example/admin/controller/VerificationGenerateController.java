@@ -1,6 +1,8 @@
 package com.example.admin.controller;
 
+import com.example.common.enums.OperationType;
 import com.example.common.result.Result;
+import com.example.system.annotation.Log;
 import com.example.system.service.VerificationGenerateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +28,7 @@ public class VerificationGenerateController {
      * 验证码生成
      * @return 验证码图片
      */
+
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/verification")
     public Result verificationGenerate(){

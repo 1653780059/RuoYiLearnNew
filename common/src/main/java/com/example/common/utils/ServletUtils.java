@@ -18,7 +18,7 @@ public class ServletUtils {
     private static ServletRequestAttributes getRequestAttributes(){
         return (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     }
-    private static HttpServletRequest getRequest(){
+    public static HttpServletRequest getRequest(){
         return getRequestAttributes().getRequest();
     }
     public static String getLoginUUID(){

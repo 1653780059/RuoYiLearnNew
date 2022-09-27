@@ -1,7 +1,9 @@
 package com.example.admin.controller;
 
+import com.example.common.enums.OperationType;
 import com.example.common.result.Result;
 import com.example.common.domain.SysUsers;
+import com.example.system.annotation.Log;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,6 +33,7 @@ public class SysLoginController {
 
         return loginService.login(user.getUsername(),user.getPassword(),user.getVerification());
     }
+    @Log(title = "测试",OPERATION_TYPE = OperationType.SELECT)
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/hello")
     public Result hello(){

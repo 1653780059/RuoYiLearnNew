@@ -1,6 +1,7 @@
 package com.example.admin;
 
 import com.example.common.config.LearnConfig;
+import com.example.common.factory.AsyncManager;
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.utils.JwtUtils;
 import com.example.system.mapper.SysUsersMapper;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Arrays;
+import java.util.TimerTask;
 
 @SpringBootTest
 class AdminApplicationTests {
@@ -38,9 +42,16 @@ class AdminApplicationTests {
     }
     @Test
     void test(){
-        String a = "123";
-        String b=new String("123").intern();
-        System.out.println(a==b);
+        final Integer[] a = {0};
+        TimerTask timerTask = new TimerTask(){
+
+            @Override
+            public void run() {
+                a[0] =10;
+            }
+        };
+        AsyncManager.getAsyncManager().execute(timerTask);
+        System.out.println(Arrays.toString(a));
     }
 
 
