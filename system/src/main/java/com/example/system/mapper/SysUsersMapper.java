@@ -1,10 +1,9 @@
 package com.example.system.mapper;
 
-import com.example.system.domain.SysUsers;
+import com.example.common.domain.SysUsers;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +12,7 @@ import java.util.Optional;
 * @author 16537
 * @description 针对表【sys_users(系统用户)】的数据库操作Mapper
 * @createDate 2022-09-19 16:25:30
-* @Entity com.example.system.domain.SysUsers
+* @Entity com.example.common.domain.SysUsers
 */
 @Mapper
 public interface SysUsersMapper extends BaseMapper<SysUsers> {

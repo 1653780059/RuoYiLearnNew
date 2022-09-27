@@ -2,10 +2,8 @@ package com.example.admin.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.common.result.Result;
-import com.example.system.domain.SysMenus;
-import com.example.system.domain.SysUsers;
+import com.example.common.domain.SysMenus;
 import com.example.system.mapper.SysMenusMapper;
-import com.example.system.mapper.SysUsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 

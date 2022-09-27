@@ -1,9 +1,6 @@
 package com.example.farmwork.handler;
 
 import com.example.farmwork.utils.SecurityUtils;
-import com.example.system.domain.LoginDetails;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +19,6 @@ public class AuthorizationHandler{
 
         List<String> permission1 = SecurityUtils.getPermission();
         List<String> collect = permission1.stream().filter(per -> per.equals(permission)).collect(Collectors.toList());
-        if(collect.isEmpty()){
-            return false;
-        }
-        return true;
+        return !collect.isEmpty();
     }
 }

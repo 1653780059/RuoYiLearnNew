@@ -1,12 +1,11 @@
 package com.example.system.service.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.example.common.constants.RedisConstants;
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.result.Result;
 import com.example.common.utils.JwtUtils;
 import com.example.common.utils.ServletUtils;
-import com.example.system.domain.LoginDetails;
+import com.example.common.domain.LoginDetails;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -14,8 +13,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @Classname SysLoginServiceImpl

@@ -1,7 +1,7 @@
 package com.example.farmwork.utils;
 
-import com.example.system.domain.LoginDetails;
-import com.example.system.domain.SysUsers;
+import com.example.common.domain.LoginDetails;
+import com.example.common.domain.SysUsers;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

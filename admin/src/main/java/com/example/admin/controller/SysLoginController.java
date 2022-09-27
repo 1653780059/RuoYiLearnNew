@@ -1,23 +1,11 @@
 package com.example.admin.controller;
 
-import cn.hutool.core.util.StrUtil;
-import com.auth0.jwt.JWT;
-import com.example.common.holders.AuthenticationHolder;
 import com.example.common.result.Result;
-import com.example.common.utils.JwtUtils;
-import com.example.system.domain.LoginDetails;
-import com.example.system.domain.SysUsers;
+import com.example.common.domain.SysUsers;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 /**
  * @author 16537

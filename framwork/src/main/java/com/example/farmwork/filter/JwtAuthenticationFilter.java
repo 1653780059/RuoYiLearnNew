@@ -4,11 +4,10 @@ import cn.hutool.json.JSONUtil;
 import com.example.common.constants.RedisConstants;
 import com.example.common.utils.JwtUtils;
 import com.example.farmwork.utils.SecurityUtils;
-import com.example.system.domain.LoginDetails;
+import com.example.common.domain.LoginDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 

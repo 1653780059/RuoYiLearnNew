@@ -1,6 +1,6 @@
 package com.example.system.service;
 
-import com.example.system.domain.SysMenus;
+import com.example.common.domain.SysMenus;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -38,7 +38,9 @@ class AdminApplicationTests {
     }
     @Test
     void test(){
-
+        String a = "123";
+        String b=new String("123").intern();
+        System.out.println(a==b);
     }
 
 

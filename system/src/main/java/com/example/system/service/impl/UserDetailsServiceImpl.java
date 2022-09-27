@@ -1,19 +1,15 @@
 package com.example.system.service.impl;
 
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.UUID;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONConfig;
 import cn.hutool.json.JSONUtil;
-import com.alibaba.druid.support.json.JSONUtils;
 import com.example.common.constants.RedisConstants;
 import com.example.common.enums.AccountStates;
 import com.example.common.exception.MaxLoginFailException;
 import com.example.common.holders.AuthenticationHolder;
-import com.example.common.utils.ServletUtils;
-import com.example.system.domain.LoginDetails;
-import com.example.system.domain.SysUsers;
+import com.example.common.domain.LoginDetails;
+import com.example.common.domain.SysUsers;
 import com.example.system.mapper.SysUsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -24,7 +20,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;

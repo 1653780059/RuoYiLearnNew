@@ -30,7 +30,7 @@
         <!--        框架配置-->
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>farmwork</artifactId>
+            <artifactId>system</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

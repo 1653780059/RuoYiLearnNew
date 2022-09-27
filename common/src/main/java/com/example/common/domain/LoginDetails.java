@@ -1,6 +1,5 @@
-package com.example.system.domain;
+package com.example.common.domain;
 
-import com.example.system.domain.SysUsers;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
