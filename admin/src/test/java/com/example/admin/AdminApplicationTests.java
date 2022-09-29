@@ -1,7 +1,6 @@
 package com.example.admin;
 
-import com.example.common.config.LearnConfig;
-import com.example.common.factory.AsyncManager;
+
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.utils.JwtUtils;
 import com.example.system.mapper.SysUsersMapper;
@@ -42,16 +41,7 @@ class AdminApplicationTests {
     }
     @Test
     void test(){
-        final Integer[] a = {0};
-        TimerTask timerTask = new TimerTask(){
 
-            @Override
-            public void run() {
-                a[0] =10;
-            }
-        };
-        AsyncManager.getAsyncManager().execute(timerTask);
-        System.out.println(Arrays.toString(a));
     }
 
 

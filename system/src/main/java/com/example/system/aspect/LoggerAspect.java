@@ -7,6 +7,8 @@ import com.example.common.enums.OperationType;
 import com.example.common.utils.IpUtils;
 import com.example.common.utils.ServletUtils;
 import com.example.farmwork.utils.SecurityUtils;
+import com.example.system.factory.AsyncFactory;
+import com.example.system.factory.AsyncManager;
 import com.example.system.mapper.SysLogsMapper;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -37,10 +39,19 @@ public class LoggerAspect {
     }
     @AfterThrowing(pointcut = "@annotation(log)",throwing = "e")
     public void afterThrowing(JoinPoint joinPoint,Log log,Exception e){
+
         handleLog(joinPoint,log,e,null);
     }
+
+    /**
+     * 异步线程保存日志
+     * @param joinPoint 切入点
+     * @param log 日志对象
+     * @param e 异常对象
+     * @param result 请求返回值
+     */
     private void handleLog(JoinPoint joinPoint, Log log, Exception e, Object result) {
-        SysUsers loginUser = SecurityUtils.getLoginUser();
+        /*SysUsers loginUser = SecurityUtils.getLoginUser();
         SysLogs sysLogs = new SysLogs();
         sysLogs.setUsername(loginUser.getUsername());
         String className=joinPoint.getTarget().getClass().getName();
@@ -50,13 +61,14 @@ public class LoggerAspect {
         sysLogs.setParams(Arrays.toString(args));
         OperationType operationType = log.OPERATION_TYPE();
         sysLogs.setOperation(operationType.getType());
-        sysLogs.setTime(new Date().getTime());
+        sysLogs.setTime(System.currentTimeMillis());
         if (e!=null){
             sysLogs.setOperation(OperationType.FAIL.getType());
         }
         String ipAddr = IpUtils.getIpAddr(ServletUtils.getRequest());
         sysLogs.setIp(ipAddr);
-        sysLogsMapper.insert(sysLogs);
+        sysLogsMapper.insert(sysLogs);*/
 
+        AsyncManager.getAsyncManager().execute(new AsyncFactory().sysLogsSaveTask(joinPoint,log,sysLogsMapper::insert,e));
     }
 }

@@ -1,12 +1,10 @@
-package com.example.common.factory;
+package com.example.system.factory;
 
 import cn.hutool.extra.spring.SpringUtil;
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
