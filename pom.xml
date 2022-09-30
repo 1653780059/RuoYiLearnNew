@@ -24,6 +24,13 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/eu.bitwalker/UserAgentUtils -->
+       <!-- <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+-->
         <!--@ConfiguaritionProperties的执行器的配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

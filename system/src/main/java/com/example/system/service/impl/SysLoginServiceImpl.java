@@ -1,11 +1,14 @@
 package com.example.system.service.impl;
 
 import com.example.common.constants.RedisConstants;
+import com.example.common.enums.LoginStates;
 import com.example.common.holders.AuthenticationHolder;
 import com.example.common.result.Result;
 import com.example.common.utils.JwtUtils;
 import com.example.common.utils.ServletUtils;
 import com.example.common.domain.LoginDetails;
+import com.example.system.factory.AsyncFactory;
+import com.example.system.factory.AsyncManager;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -31,6 +34,7 @@ public class SysLoginServiceImpl implements SysLoginService {
     public Result login(String username, String password,String verification) {
         String key=RedisConstants.USER_NOT_FOUND+username;
         if(stringRedisTemplate.opsForValue().get(key)!=null){
+
             throw new RuntimeException("用户未注册请先注册");
         }
         if(username==null||password==null){
@@ -52,6 +56,7 @@ public class SysLoginServiceImpl implements SysLoginService {
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         LoginDetails loginDetails = (LoginDetails) authenticate.getPrincipal();
         String token = JwtUtils.getToken(loginDetails.getToken());
+        AsyncManager.getAsyncManager().execute(new AsyncFactory().sysLoginInfoLogTask(username, LoginStates.SUCCESS.getType(), "登录成功"));
         return new Result().ok(token);
 
     }

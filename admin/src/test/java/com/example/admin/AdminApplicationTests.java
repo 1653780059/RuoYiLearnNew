@@ -2,6 +2,7 @@ package com.example.admin;
 
 
 import com.example.common.holders.AuthenticationHolder;
+import com.example.common.utils.IPAddressUtils;
 import com.example.common.utils.JwtUtils;
 import com.example.system.mapper.SysUsersMapper;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,8 @@ class AdminApplicationTests {
     }
     @Test
     void test(){
-
+        String addressByIP = IPAddressUtils.getAddressByIP("172.168.126.11");
+        System.out.println(addressByIP);
     }
 
 

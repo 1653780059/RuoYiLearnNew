@@ -13,7 +13,7 @@
         <result property="ipaddr" column="ipAddr" jdbcType="VARCHAR"/>
         <result property="discription" column="discription" jdbcType="VARCHAR"/>
             <result property="ip" column="ip" jdbcType="VARCHAR"/>
-            <result property="createdtime" column="createdTime" jdbcType="BIGINT"/>
+            <result property="createdtime" column="createdTime" jdbcType="DATE"/>
     </resultMap>
 
     <sql id="Base_Column_List">

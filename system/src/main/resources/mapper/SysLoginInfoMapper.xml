@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.SysLoginInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.common.domain.SysLoginInfo">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userame" column="userame" jdbcType="VARCHAR"/>
+            <result property="logintime" column="loginTime" jdbcType="DATE"/>
+            <result property="os" column="os" jdbcType="VARCHAR"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+            <result property="ipaddr" column="ipAddr" jdbcType="VARCHAR"/>
+            <result property="browser" column="browser" jdbcType="VARCHAR"/>
+            <result property="state" column="state" jdbcType="VARCHAR"/>
+            <result property="msg" column="msg" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userame,loginTime,
+        os,ip,ipAddr,
+        browser,state
+    </sql>
+</mapper>

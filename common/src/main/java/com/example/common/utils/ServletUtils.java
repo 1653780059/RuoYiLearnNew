@@ -43,4 +43,8 @@ public class ServletUtils {
     public static String getURI() {
         return getRequest().getRequestURI();
     }
+
+    public static String getHeader(String s) {
+        return getRequest().getHeader(s);
+    }
 }
