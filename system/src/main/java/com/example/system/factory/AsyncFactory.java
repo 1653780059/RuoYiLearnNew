@@ -8,6 +8,7 @@ import com.example.common.domain.SysUsers;
 import com.example.common.enums.OperationType;
 import com.example.common.utils.IPAddressUtils;
 import com.example.common.utils.IpUtils;
+import com.example.common.utils.MailUtils;
 import com.example.common.utils.ServletUtils;
 import com.example.farmwork.utils.SecurityUtils;
 import com.example.system.annotation.Log;
@@ -102,6 +103,22 @@ public class AsyncFactory {
                     e.printStackTrace();
                 }
 
+
+            }
+        };
+    }
+
+    public TimerTask sendMail(String subject,String context,String ...to){
+
+        return new TimerTask() {
+            @Override
+            public void run() {
+                try{
+                    MailUtils mailUtils = SpringUtil.getBean("mailUtils");
+                    mailUtils.sendEmail(subject,context,to);
+                }catch (Throwable e){
+                    e.printStackTrace();
+                }
 
             }
         };

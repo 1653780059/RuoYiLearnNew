@@ -1,9 +1,13 @@
 package com.example.admin;
 
 
+import cn.hutool.extra.spring.SpringUtil;
 import com.example.common.holders.AuthenticationHolder;
-import com.example.common.utils.IPAddressUtils;
 import com.example.common.utils.JwtUtils;
+
+import com.example.common.utils.MailUtils;
+import com.example.system.factory.AsyncFactory;
+import com.example.system.factory.AsyncManager;
 import com.example.system.mapper.SysUsersMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Arrays;
-import java.util.TimerTask;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 @SpringBootTest
 class AdminApplicationTests {
@@ -20,6 +25,7 @@ class AdminApplicationTests {
     PasswordEncoder passwordEncoder;
     @Autowired
     SysUsersMapper usersMapper;
+
     @Test
     void contextLoads() {
         System.out.println(passwordEncoder.encode("1234"));
@@ -41,10 +47,22 @@ class AdminApplicationTests {
 
     }
     @Test
-    void test(){
-        String addressByIP = IPAddressUtils.getAddressByIP("172.168.126.11");
-        System.out.println(addressByIP);
+    void testProperties(){
+        Properties properties = new Properties();
+        File file = new File("mail.properties");
+        try {
+            properties.load(new FileInputStream(file));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(properties.getProperty("mail.host"));
     }
 
+    @Test
+    void testMail(){
+        //AsyncManager.getAsyncManager().execute(new AsyncFactory().sendMail("test","async测试","1653780059@qq.com"));
+        MailUtils mailUtils = SpringUtil.getBean("mailUtils");
+        mailUtils.sendEmail("test","async测试","1653780059@qq.com");
+    }
 
 }

@@ -17,6 +17,24 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+  #邮件
+  mail:
+
+    host: smtp.qq.com
+    port: 587
+    username: 3230935352@qq.com
+    password: wnklvrqmoigvdaif
+    protocol: smtp
+    properties:
+      mail:
+        stmp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.sun.mail.util.MailSSLSocketFactory
+              fallback: false
+    default-encoding: utf-8
 #服务端口配置
 server:
   port: 8090
@@ -28,4 +46,3 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 learn:
   resource: D:/a
-

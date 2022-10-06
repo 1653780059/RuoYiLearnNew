@@ -31,7 +31,6 @@ public class AsyncManager {
     private AsyncManager() {
     }
 
-    ;
 
     public static AsyncManager getAsyncManager() {
         return ASYNC_MANAGER;

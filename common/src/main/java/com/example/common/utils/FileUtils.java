@@ -1,5 +1,6 @@
 package com.example.common.utils;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.spring.SpringUtil;
 import com.example.common.config.LearnConfig;
 import com.example.common.constants.FileConstants;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
  */
 public class FileUtils {
     private static final AtomicInteger ID = new AtomicInteger();
-
+    private static final LearnConfig learnConfig = SpringUtil.getBean("learnConfig");
     /**
      * 上传文件
      * @param file 文件对象
@@ -29,7 +30,7 @@ public class FileUtils {
      */
     public static String fileUpload(MultipartFile file) {
         String filename = file.getOriginalFilename();
-        String uploadPath = LearnConfig.getUploadPath();
+        String uploadPath = learnConfig.getUploadPath();
         assertFile(file);
         File absolutFile = getAbsolutFile(filename, uploadPath);
         try {
@@ -39,7 +40,7 @@ public class FileUtils {
         }
         String absolutePath = absolutFile.getAbsolutePath().replace("\\", "/");
 
-        return getURL(absolutePath,LearnConfig.getResource());
+        return getURL(absolutePath,learnConfig.getResource());
     }
 
     /**

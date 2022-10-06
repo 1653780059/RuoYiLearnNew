@@ -17,15 +17,15 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "learn")
 @Data
 public class LearnConfig {
-    public static String resource;
+    public  String resource;
 
-    public static String getProfile(){
+    public  String getProfile(){
         return resource+"/profile";
     }
-    public static String getUploadPath(){
+    public  String getUploadPath(){
         return getProfile()+"/upload";
     }
-    public static String getResource(){
+    public  String getResource(){
         return resource;
     }
 }
