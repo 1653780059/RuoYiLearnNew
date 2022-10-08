@@ -1,9 +1,9 @@
 package com.example.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.common.domain.SysLoginInfo;
+import com.example.base.domain.SysLoginInfo;
 import com.example.system.service.SysLoginInfoService;
-import com.example.system.mapper.SysLoginInfoMapper;
+import com.example.dao.mapper.SysLoginInfoMapper;
 import org.springframework.stereotype.Service;
 
 /**

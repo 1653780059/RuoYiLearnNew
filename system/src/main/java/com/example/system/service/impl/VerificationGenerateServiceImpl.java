@@ -53,10 +53,8 @@ public class VerificationGenerateServiceImpl implements VerificationGenerateServ
             throw new RuntimeException(e);
         }
         String uuid = UUID.randomUUID().toString();
-        map.put("uuid", uuid);
         String key= RedisConstants.LOGIN_VERIFICATION_PREFIX+uuid;
         stringRedisTemplate.opsForValue().set(key,answer,RedisConstants.VERIFICATION_EXPIRATION_TIME, TimeUnit.MINUTES);
-        map.put("img", Base64.encode(out.toByteArray()));
-        return new Result().ok(map);
+        return Result.success().put("uuid",uuid).put("img",Base64.encode(out.toByteArray()));
     }
 }

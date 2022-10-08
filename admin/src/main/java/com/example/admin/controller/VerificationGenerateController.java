@@ -1,8 +1,6 @@
 package com.example.admin.controller;
 
-import com.example.common.enums.OperationType;
 import com.example.common.result.Result;
-import com.example.system.annotation.Log;
 import com.example.system.service.VerificationGenerateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

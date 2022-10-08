@@ -1,4 +1,4 @@
-package com.example.system.factory;
+package com.example.farmwork.factory;
 
 import cn.hutool.extra.spring.SpringUtil;
 import lombok.extern.slf4j.Slf4j;

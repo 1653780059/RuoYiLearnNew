@@ -1,69 +1,72 @@
-package com.example.common.domain;
+package com.example.base.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * 
- * @TableName sys_login_info
+ * 系统日志
+ * @TableName sys_logs
  */
-@TableName(value ="sys_login_info")
+@TableName(value ="sys_logs")
 @Data
 @EqualsAndHashCode
 @ToString
-public class SysLoginInfo implements Serializable {
+public class SysLogs implements Serializable {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
-     * 
+     * 用户名
      */
-    private String userame;
-
+    private String username;
 
     /**
-     * 
+     * 用户操作
      */
-    private Date logintime;
+    private String operation;
 
     /**
-     * 
+     * 请求方法
      */
-    private String os;
+    private String method;
 
     /**
-     * 
+     * 请求参数
+     */
+    private String params;
+
+    /**
+     * 执行时长(毫秒)
+     */
+    @TableField(value = "createdTime")
+    private Long createdtime;
+
+    /**
+     * IP地址
      */
     private String ip;
 
+
     /**
-     * 
+     * ip对应物理地址
      */
+    @TableField("ipAddr")
     private String ipaddr;
+    /**
+     * 操作表述
+     */
+    private String discription;
 
-    /**
-     * 
-     */
-    private String browser;
-    /**
-     * 登录消息
-     */
-    private String msg;
-
-    /**
-     * 用户登录状态，1登录成功，0登录失败
-     */
-    private String state;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

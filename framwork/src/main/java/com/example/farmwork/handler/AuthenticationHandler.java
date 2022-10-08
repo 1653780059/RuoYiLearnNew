@@ -23,7 +23,7 @@ import java.io.IOException;
 public class AuthenticationHandler implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        Result result = new Result().no(authException.getMessage());
+        Result result = Result.error(authException.getMessage());
         String string = JSONUtil.toJsonStr(result);
         try
         {

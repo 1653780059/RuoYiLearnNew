@@ -1,4 +1,4 @@
-package com.example.system.annotation;
+package com.example.common.annotation;
 
 import com.example.common.enums.OperationType;
 

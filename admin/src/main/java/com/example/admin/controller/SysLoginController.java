@@ -2,8 +2,8 @@ package com.example.admin.controller;
 
 import com.example.common.enums.OperationType;
 import com.example.common.result.Result;
-import com.example.common.domain.SysUsers;
-import com.example.system.annotation.Log;
+import com.example.base.domain.SysUsers;
+import com.example.common.annotation.Log;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,6 +37,6 @@ public class SysLoginController {
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/hello")
     public Result hello(){
-        return new Result().ok("hello");
+        return Result.success("hello");
     }
 }

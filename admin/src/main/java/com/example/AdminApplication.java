@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@MapperScan("com.example.system.mapper")
+@MapperScan("com.example.dao.mapper")
 @EnableSwagger2
 public class AdminApplication {
 

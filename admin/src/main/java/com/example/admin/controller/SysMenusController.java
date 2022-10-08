@@ -2,8 +2,8 @@ package com.example.admin.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.common.result.Result;
-import com.example.common.domain.SysMenus;
-import com.example.system.mapper.SysMenusMapper;
+import com.example.base.domain.SysMenus;
+import com.example.dao.mapper.SysMenusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -37,11 +37,11 @@ public class SysMenusController extends BaseController{
     public Result getList(){
         startPage();
         List<SysMenus> sysUsers = sysMenusMapper.selectList(new QueryWrapper<>());
-        return new Result().ok(sysUsers);
+        return Result.success(sysUsers);
     }
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
     @GetMapping("/test/{date}")
     public Result test(@PathVariable("date") Date date){
-        return new Result().ok(date);
+        return Result.success(date);
     }
 }

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.system.mapper.SysUsersMapper">
+<mapper namespace="com.example.dao.mapper.SysUsersMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.common.domain.SysUsers">
+    <resultMap id="BaseResultMap" type="com.example.base.domain.SysUsers">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="username" column="username" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
@@ -27,7 +27,7 @@
     <update id="setVaild">
         update sys_users set valid=#{vaild} where id=#{userId}
     </update>
-    <select id="loadUserByUsername" resultType="com.example.common.domain.SysUsers">
+    <select id="loadUserByUsername" resultType="com.example.base.domain.SysUsers">
         select <include refid="Base_Column_List"></include> from sys_users where username=#{username}
     </select>
     <select id="getPermission" resultType="java.lang.String">

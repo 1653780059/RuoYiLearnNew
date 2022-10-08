@@ -6,9 +6,7 @@ import com.example.common.holders.AuthenticationHolder;
 import com.example.common.utils.JwtUtils;
 
 import com.example.common.utils.MailUtils;
-import com.example.system.factory.AsyncFactory;
-import com.example.system.factory.AsyncManager;
-import com.example.system.mapper.SysUsersMapper;
+import com.example.dao.mapper.SysUsersMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

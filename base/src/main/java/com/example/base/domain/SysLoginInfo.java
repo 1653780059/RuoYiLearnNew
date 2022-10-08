@@ -1,4 +1,4 @@
-package com.example.common.domain;
+package com.example.base.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,62 +11,59 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * 系统日志
- * @TableName sys_logs
+ * 
+ * @TableName sys_login_info
  */
-@TableName(value ="sys_logs")
+@TableName(value ="sys_login_info")
 @Data
 @EqualsAndHashCode
 @ToString
-public class SysLogs implements Serializable {
+public class SysLoginInfo implements Serializable {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     /**
-     * 用户名
+     * 
      */
-    private String username;
+    private String userame;
+
 
     /**
-     * 用户操作
+     * 
      */
-    private String operation;
+    private Date logintime;
 
     /**
-     * 请求方法
+     * 
      */
-    private String method;
+    private String os;
 
     /**
-     * 请求参数
-     */
-    private String params;
-
-    /**
-     * 执行时长(毫秒)
-     */
-    @TableField(value = "createdTime")
-    private Long createdtime;
-
-    /**
-     * IP地址
+     * 
      */
     private String ip;
 
-
     /**
-     * ip对应物理地址
+     * 
      */
-    @TableField("ipAddr")
     private String ipaddr;
-    /**
-     * 操作表述
-     */
-    private String discription;
 
+    /**
+     * 
+     */
+    private String browser;
+    /**
+     * 登录消息
+     */
+    private String msg;
+
+    /**
+     * 用户登录状态，1登录成功，0登录失败
+     */
+    private String state;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

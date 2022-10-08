@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.system.mapper.SysLoginInfoMapper">
+<mapper namespace="com.example.dao.mapper.SysLoginInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.common.domain.SysLoginInfo">
+    <resultMap id="BaseResultMap" type="com.example.base.domain.SysLoginInfo">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="userame" column="userame" jdbcType="VARCHAR"/>
             <result property="logintime" column="loginTime" jdbcType="DATE"/>

@@ -23,6 +23,6 @@ public class CommonServiceImpl implements CommonService {
     public Result upload(MultipartFile file) {
         String path = FileUtils.fileUpload(file);
 
-        return new Result().ok(path);
+        return Result.success(path);
     }
 }

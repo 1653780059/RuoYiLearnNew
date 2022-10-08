@@ -9,11 +9,11 @@ import com.example.common.enums.AccountStates;
 import com.example.common.enums.LoginStates;
 import com.example.common.exception.MaxLoginFailException;
 import com.example.common.holders.AuthenticationHolder;
-import com.example.common.domain.LoginDetails;
-import com.example.common.domain.SysUsers;
-import com.example.system.factory.AsyncFactory;
-import com.example.system.factory.AsyncManager;
-import com.example.system.mapper.SysUsersMapper;
+import com.example.base.domain.LoginDetails;
+import com.example.base.domain.SysUsers;
+import com.example.farmwork.factory.AsyncFactory;
+import com.example.farmwork.factory.AsyncManager;
+import com.example.dao.mapper.SysUsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 

@@ -1,25 +1,15 @@
-package com.example.system.aspect;
+package com.example.farmwork.aspect;
 
-import cn.hutool.core.net.Ipv4Util;
-import com.example.common.domain.SysLogs;
-import com.example.common.domain.SysUsers;
-import com.example.common.enums.OperationType;
-import com.example.common.utils.IpUtils;
-import com.example.common.utils.ServletUtils;
-import com.example.farmwork.utils.SecurityUtils;
-import com.example.system.factory.AsyncFactory;
-import com.example.system.factory.AsyncManager;
-import com.example.system.mapper.SysLogsMapper;
+import com.example.farmwork.factory.AsyncFactory;
+import com.example.farmwork.factory.AsyncManager;
+import com.example.dao.mapper.SysLogsMapper;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.system.annotation.Log;
-
-import java.util.Arrays;
-import java.util.Date;
+import com.example.common.annotation.Log;
 
 /**
  * @author 16537

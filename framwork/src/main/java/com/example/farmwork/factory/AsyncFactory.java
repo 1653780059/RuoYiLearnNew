@@ -1,20 +1,19 @@
-package com.example.system.factory;
+package com.example.farmwork.factory;
 
 import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.http.useragent.*;
-import com.example.common.domain.SysLoginInfo;
-import com.example.common.domain.SysLogs;
-import com.example.common.domain.SysUsers;
+import com.example.base.domain.SysLoginInfo;
+import com.example.base.domain.SysLogs;
+import com.example.base.domain.SysUsers;
 import com.example.common.enums.OperationType;
 import com.example.common.utils.IPAddressUtils;
 import com.example.common.utils.IpUtils;
 import com.example.common.utils.MailUtils;
 import com.example.common.utils.ServletUtils;
 import com.example.farmwork.utils.SecurityUtils;
-import com.example.system.annotation.Log;
-import com.example.system.mapper.SysLoginInfoMapper;
+import com.example.common.annotation.Log;
+import com.example.dao.mapper.SysLoginInfoMapper;
 import org.aspectj.lang.JoinPoint;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;

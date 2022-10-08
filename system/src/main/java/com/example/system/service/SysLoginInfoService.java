@@ -1,6 +1,6 @@
 package com.example.system.service;
 
-import com.example.common.domain.SysLoginInfo;
+import com.example.base.domain.SysLoginInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

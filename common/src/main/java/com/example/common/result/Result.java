@@ -1,8 +1,11 @@
 package com.example.common.result;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * @Classname Result
@@ -11,28 +14,52 @@ import java.io.Serializable;
  * @Date 2022/9/20 9:59
  * @Created by 16537
  */
-@Data
-public class Result {
-    private Object data;
-    private boolean status;
-    private String msg;
-    public Result ok(){
-        status=true;
-        return this;
+
+public class Result extends HashMap<String ,Object> {
+    public static final String CODE="code";
+    public static final String MSG="msg";
+    public static final String DATA="data";
+    public Result(){
+        super();
     }
-    public Result ok(Object data){
-        this.status=true;
-        this.data=data;
-        return this;
+
+    public Result(Integer code,String msg,Object data){
+        super();
+        super.put(CODE,code);
+        super.put(MSG,msg);
+        if(data!=null){
+            super.put(DATA,data);
+        }
     }
-    public Result no(String msg){
-        this.status=false;
-        this.msg=msg;
-        return this;
+    public static Result success(){
+        return success("操作成功");
     }
-    public Result no(Throwable throwable){
-        this.status=false;
-        this.msg=throwable.getMessage();
-        return this;
+    public static Result success(Object data){
+        return success("操作成功",data);
     }
+    public static Result success(String msg){
+        return success(msg,null);
+    }
+    public static Result success(String msg,Object data){
+        return new Result(200,msg,data);
+    }
+
+    @Override
+    public Result put(String key, Object value) {
+         super.put(key, value);
+         return this;
+    }
+    public static Result error(){
+        return success("操作失败");
+    }
+    public static Result error(Object data){
+        return success("操作失败",data);
+    }
+    public static Result error(String msg){
+        return success(msg,null);
+    }
+    public static Result error(String msg,Object data){
+        return new Result(500,msg,data);
+    }
+
 }

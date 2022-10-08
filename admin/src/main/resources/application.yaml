@@ -10,14 +10,14 @@ spring:
     #数据库
   datasource:
     username: root
-    url: jdbc:mysql://localhost:3306/jtsys
-    password: 123456
+    url: jdbc:mysql://sh-cynosdbmysql-grp-mqgh9bvi.sql.tencentcdb.com:24829/jtsys
+    password: 15168472629WDgh
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   servlet:
     multipart:
       max-file-size: 10MB
-  #邮件
+  #邮件配置
   mail:
 
     host: smtp.qq.com
@@ -44,5 +44,6 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #系统配置
 learn:
   resource: D:/a

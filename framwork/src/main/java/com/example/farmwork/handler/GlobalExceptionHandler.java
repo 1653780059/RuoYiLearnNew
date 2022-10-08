@@ -17,6 +17,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Throwable.class)
     @ResponseBody
     public Result ExceptionHandler(Throwable e){
-        return new Result().no(e);
+        return Result.error(e.getMessage());
     }
 }

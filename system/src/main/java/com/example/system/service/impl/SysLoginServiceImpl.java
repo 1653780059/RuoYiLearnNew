@@ -6,9 +6,9 @@ import com.example.common.holders.AuthenticationHolder;
 import com.example.common.result.Result;
 import com.example.common.utils.JwtUtils;
 import com.example.common.utils.ServletUtils;
-import com.example.common.domain.LoginDetails;
-import com.example.system.factory.AsyncFactory;
-import com.example.system.factory.AsyncManager;
+import com.example.base.domain.LoginDetails;
+import com.example.farmwork.factory.AsyncFactory;
+import com.example.farmwork.factory.AsyncManager;
 import com.example.system.service.SysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -57,7 +57,7 @@ public class SysLoginServiceImpl implements SysLoginService {
         LoginDetails loginDetails = (LoginDetails) authenticate.getPrincipal();
         String token = JwtUtils.getToken(loginDetails.getToken());
         AsyncManager.getAsyncManager().execute(new AsyncFactory().sysLoginInfoLogTask(username, LoginStates.SUCCESS.getType(), "登录成功"));
-        return new Result().ok(token);
+        return Result.success().put("token",token);
 
     }
 }
