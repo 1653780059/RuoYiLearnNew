@@ -5,6 +5,7 @@ import com.example.common.constants.RedisConstants;
 import com.example.common.utils.JwtUtils;
 import com.example.farmwork.utils.SecurityUtils;
 import com.example.base.domain.LoginDetails;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +29,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 @Component
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     StringRedisTemplate redisTemplate;

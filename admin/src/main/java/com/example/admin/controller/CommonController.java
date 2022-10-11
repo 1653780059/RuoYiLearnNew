@@ -2,12 +2,10 @@ package com.example.admin.controller;
 
 import com.example.common.result.Result;
 import com.example.system.service.CommonService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -17,11 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
  * @Version 1.0.0
  * @Date 2022/9/26 10:32
  */
+
 @RestController
 @RequestMapping("/common")
+@AllArgsConstructor
 public class CommonController {
-    @Autowired
-    CommonService commonService;
+
+    private CommonService commonService;
 
     /**
      * 文件上传

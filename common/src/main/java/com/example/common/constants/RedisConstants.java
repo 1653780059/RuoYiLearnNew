@@ -48,4 +48,6 @@ public final class RedisConstants {
     public static final String ORDER_NO="order:no:";
 
     public static final String ORDER_NO_LOCK="order:no:lock";
+
+    public static final String NO_PAY_ORDER="nopay:";
 }

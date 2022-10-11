@@ -4,12 +4,14 @@ import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.http.useragent.*;
 import com.example.base.domain.SysLoginInfo;
 import com.example.base.domain.SysLogs;
+import com.example.base.domain.SysOrderInfo;
 import com.example.base.domain.SysUsers;
 import com.example.common.enums.OperationType;
 import com.example.common.utils.IPAddressUtils;
 import com.example.common.utils.IpUtils;
 import com.example.common.utils.MailUtils;
 import com.example.common.utils.ServletUtils;
+import com.example.dao.mapper.SysOrderInfoMapper;
 import com.example.farmwork.utils.SecurityUtils;
 import com.example.common.annotation.Log;
 import com.example.dao.mapper.SysLoginInfoMapper;
@@ -123,4 +125,13 @@ public class AsyncFactory {
         };
     }
 
+    public TimerTask sysOrderInfoSaveTask(SysOrderInfo orderInfo) {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                SysOrderInfoMapper orderInfoMapper = SpringUtil.getBean("sysOrderInfoMapper");
+                orderInfoMapper.insert(orderInfo);
+            }
+        };
+    }
 }

@@ -8,6 +8,7 @@ package com.example.common.constants;
  * @Date 2022/10/11 9:43
  */
 public class WxRequestConstants {
+    public static final String Accept_Header = "Accept";
      //下单必要参数
     /**
      * 应用id
@@ -37,9 +38,6 @@ public class WxRequestConstants {
      * 总金额
      */
     public static final String TOTAL ="total";
-    /**
-     * 货币类型 CNY
-     */
-    public static final String CURRENCY = "currency";
+
 
 }

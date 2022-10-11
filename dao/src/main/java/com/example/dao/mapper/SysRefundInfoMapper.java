@@ -2,6 +2,7 @@ package com.example.dao.mapper;
 
 import com.example.base.domain.SysRefundInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author 16537
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-10-11 10:50:22
 * @Entity com.example.base.domain.SysRefundInfo
 */
+@Mapper
 public interface SysRefundInfoMapper extends BaseMapper<SysRefundInfo> {
 
 }

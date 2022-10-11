@@ -2,6 +2,7 @@ package com.example.dao.mapper;
 
 import com.example.base.domain.SysProduct;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author 16537
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-10-11 10:49:28
 * @Entity com.example.base.domain.SysProduct
 */
+@Mapper
 public interface SysProductMapper extends BaseMapper<SysProduct> {
 
 }

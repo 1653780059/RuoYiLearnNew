@@ -5,6 +5,7 @@ import com.example.common.result.Result;
 import com.example.base.domain.SysUsers;
 import com.example.common.annotation.Log;
 import com.example.system.service.SysLoginService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +21,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sys")
+@AllArgsConstructor
+
 public class SysLoginController {
     /**
      * 登录逻辑
      * 需要前端配合传入uuid头，以获取验证码
      * 以便做用户登录次数限制
      */
-    @Autowired
-    SysLoginService loginService;
+
+    private SysLoginService loginService;
     @PostMapping("/login")
     public Result userLogin(@RequestBody SysUsers user){
 

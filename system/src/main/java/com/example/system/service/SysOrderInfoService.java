@@ -10,4 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface SysOrderInfoService extends IService<SysOrderInfo> {
 
+    SysOrderInfo newOrderInfo(String productId, String count);
 }

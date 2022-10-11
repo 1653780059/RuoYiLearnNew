@@ -43,7 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                //跨域 预检查  需要放行所有OPTIONS操作
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+                //.antMatchers("/**").permitAll()
                 .antMatchers("/sys/login","/sys/verification").anonymous()
                 //放行静态资源和swagger资源
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()

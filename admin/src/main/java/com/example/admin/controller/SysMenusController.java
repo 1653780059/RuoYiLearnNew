@@ -1,16 +1,12 @@
 package com.example.admin.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.common.result.Result;
 import com.example.base.domain.SysMenus;
-import com.example.dao.mapper.SysMenusMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.system.service.SysMenusService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -23,10 +19,11 @@ import java.util.List;
  * @Date 2022/9/26 9:35
  */
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/sys/menu")
+@AllArgsConstructor
+
 public class SysMenusController extends BaseController{
-    @Autowired
-    SysMenusMapper sysMenusMapper;
+    private SysMenusService menusService;
 
     /**
      * 获取菜单列表
@@ -36,7 +33,7 @@ public class SysMenusController extends BaseController{
     @GetMapping("/list")
     public Result getList(){
         startPage();
-        List<SysMenus> sysUsers = sysMenusMapper.selectList(new QueryWrapper<>());
+        List<SysMenus> sysUsers = menusService.selectList();
         return Result.success(sysUsers);
     }
     @PreAuthorize("@a.hasPer('sys:menu:delete')")
