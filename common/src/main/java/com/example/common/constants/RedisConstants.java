@@ -44,4 +44,8 @@ public final class RedisConstants {
      * 无用户名有效期
      */
     public static final Integer USER_NOT_FOUND_EXPIRATION_TIME = 3;
+
+    public static final String ORDER_NO="order:no:";
+
+    public static final String ORDER_NO_LOCK="order:no:lock";
 }
