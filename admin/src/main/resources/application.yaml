@@ -43,7 +43,8 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #系统配置
 learn:
   resource: D:/a
+  #订单过期时间
+  order-timeout: -5

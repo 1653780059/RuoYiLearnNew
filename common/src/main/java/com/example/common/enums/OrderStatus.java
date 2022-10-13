@@ -1,5 +1,6 @@
 package com.example.common.enums;
 
+import com.alibaba.druid.sql.ast.SQLArgument;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -26,6 +27,10 @@ public enum OrderStatus {
      * 已取消
      */
     CANCEL("用户已取消"),
+    /**
+     * 退款申请已提交
+     */
+    REFUND_APPLICATION("退款申请已提交"),
 
     /**
      * 退款中
@@ -40,8 +45,9 @@ public enum OrderStatus {
     /**
      * 退款异常
      */
-    REFUND_ABNORMAL("退款异常");
+    REFUND_ABNORMAL("退款异常"),
 
+     REFUND_CLOSE("退款已关闭");
     /**
      * 类型
      */

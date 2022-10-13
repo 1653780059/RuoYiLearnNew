@@ -1,5 +1,6 @@
 package com.example.farmwork.config;
 
+import com.example.common.enums.wx.WxNotifyType;
 import com.example.farmwork.filter.JwtAuthenticationFilter;
 import com.example.farmwork.handler.AuthenticationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //跨域 预检查  需要放行所有OPTIONS操作
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 //.antMatchers("/**").permitAll()
-                .antMatchers("/sys/login","/sys/verification").anonymous()
+                .antMatchers("/sys/login","/sys/verification", "/sys/native/pay/notify","/sys/native/pay/refund/notify").anonymous()
                 //放行静态资源和swagger资源
                 .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**").permitAll()
                 .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/*/api-docs", "/druid/**").permitAll()

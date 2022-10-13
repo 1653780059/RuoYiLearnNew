@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class LearnConfig {
     public  String resource;
-
+    public Integer orderTimeout;
     public  String getProfile(){
         return resource+"/profile";
     }

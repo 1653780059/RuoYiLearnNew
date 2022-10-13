@@ -48,13 +48,9 @@ public class OrderNoUtils {
         String key = RedisConstants.ORDER_NO.concat(format);
         String count;
         long no;
-        while (!Boolean.TRUE.equals(redisTemplate.opsForValue().setIfAbsent(RedisConstants.ORDER_NO_LOCK, "lock"))){
-            synchronized (LOCK){
-                try {
-                    LOCK.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        while (true){
+            if(Boolean.TRUE.equals(redisTemplate.opsForValue().setIfAbsent(RedisConstants.ORDER_NO_LOCK, "lock"))){
+                break;
             }
         }
         if((count=redisTemplate.opsForValue().get(key))==null){
@@ -66,10 +62,7 @@ public class OrderNoUtils {
         no=time<<16 | Long.parseLong(count);
         int newCount = Integer.parseInt(count) + 1;
         redisTemplate.opsForValue().set(key,String.valueOf(newCount));
-        synchronized (LOCK){
-            redisTemplate.delete(RedisConstants.ORDER_NO_LOCK);
-            LOCK.notifyAll();
-        }
+        redisTemplate.delete(RedisConstants.ORDER_NO_LOCK);
         return String.valueOf(no);
 
     }

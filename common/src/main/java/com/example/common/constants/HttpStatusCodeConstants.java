@@ -13,4 +13,5 @@ public class HttpStatusCodeConstants {
     public static final Integer SUCCESS_WITH_BODY = 200;
     public static final Integer SUCCESS_NO_BODY=204;
     public static final Integer NETWORK_ERROR=500;
+    public static final Integer NO_AUTHENTICATION=401;
 }

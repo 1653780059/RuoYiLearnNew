@@ -11,6 +11,9 @@ import java.util.List;
 * @createDate 2022-09-26 09:59:58
 */
 public interface SysMenusService extends IService<SysMenus> {
-
+    /**
+     * 获取菜单列表支持分页
+     * @return 菜单列表
+     */
     List<SysMenus> selectList();
 }

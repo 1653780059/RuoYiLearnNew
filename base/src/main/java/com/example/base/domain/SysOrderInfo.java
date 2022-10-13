@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 /**
@@ -20,7 +22,10 @@ public class SysOrderInfo implements Serializable {
      */
     @TableId
     private Long id;
-
+    /**
+     * 购买商品数量
+     */
+    private Integer count;
     /**
      * 订单标题
      */

@@ -9,6 +9,7 @@
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="count" column="count" jdbcType="INTEGER"/>
             <result property="productId" column="product_id" jdbcType="BIGINT"/>
             <result property="totalFee" column="total_fee" jdbcType="INTEGER"/>
             <result property="codeUrl" column="code_url" jdbcType="VARCHAR"/>

@@ -1,6 +1,7 @@
 package com.example.farmwork.handler;
 
 import cn.hutool.json.JSONUtil;
+import com.example.common.constants.HttpStatusCodeConstants;
 import com.example.common.enums.LoginStates;
 import com.example.common.result.Result;
 import org.springframework.security.core.AuthenticationException;
@@ -27,7 +28,7 @@ public class AuthenticationHandler implements AuthenticationEntryPoint {
         String string = JSONUtil.toJsonStr(result);
         try
         {
-            response.setStatus(200);
+            response.setStatus(HttpStatusCodeConstants.SUCCESS_WITH_BODY);
             response.setContentType("application/json");
             response.setCharacterEncoding("utf-8");
             response.getWriter().print(string);

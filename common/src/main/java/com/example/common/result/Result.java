@@ -2,6 +2,7 @@ package com.example.common.result;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import com.example.common.constants.HttpStatusCodeConstants;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -41,7 +42,7 @@ public class Result extends HashMap<String ,Object> {
         return success(msg,null);
     }
     public static Result success(String msg,Object data){
-        return new Result(200,msg,data);
+        return new Result(HttpStatusCodeConstants.SUCCESS_WITH_BODY,msg,data);
     }
 
     @Override
@@ -50,16 +51,16 @@ public class Result extends HashMap<String ,Object> {
          return this;
     }
     public static Result error(){
-        return success("操作失败");
+        return error("操作失败");
     }
     public static Result error(Object data){
-        return success("操作失败",data);
+        return error("操作失败",data);
     }
     public static Result error(String msg){
-        return success(msg,null);
+        return error(msg,null);
     }
     public static Result error(String msg,Object data){
-        return new Result(500,msg,data);
+        return new Result(HttpStatusCodeConstants.NETWORK_ERROR,msg,data);
     }
 
 }

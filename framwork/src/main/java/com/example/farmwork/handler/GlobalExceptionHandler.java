@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalExceptionHandler {
     @ExceptionHandler(Throwable.class)
     @ResponseBody
-    public Result ExceptionHandler(Throwable e){
+    public Result exceptionHandler(Throwable e){
         return Result.error(e.getMessage());
     }
 }

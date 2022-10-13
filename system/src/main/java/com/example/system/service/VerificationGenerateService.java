@@ -10,5 +10,9 @@ import com.example.common.result.Result;
  * @Created by 16537
  */
 public interface VerificationGenerateService {
+    /**
+     * 生成验证码
+     * @return 返回BASE64加密的验证码图片信息，并返回验证码答案对应的uuid
+     */
     Result verificationGenerate();
 }

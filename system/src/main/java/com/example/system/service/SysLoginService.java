@@ -12,5 +12,12 @@ import java.util.Optional;
  * @Created by 16537
  */
 public interface SysLoginService {
+    /**
+     * 登录逻辑
+     * @param username 用户名
+     * @param password 密码
+     * @param verification 验证码
+     * @return 用户登录token
+     */
     Result login(String username,String password,String verification);
 }

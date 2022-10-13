@@ -45,14 +45,15 @@ export default {
       )
 
       const param={
-
+            'productId':'1',
+            'count':'1'
       }
       const config={
-        headers:{'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6ImQ1YTczNWIzLTZkZTgtNDg1NS04YWExLTA2OTYyMDk2M2Q4YSJ9.JGtguq2_oIX1QlApGrCxOy_9a3Piq0sPYIgXBeirnOI'}
+        headers:{'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6Ijk3ZmMxMzdmLWZlNDItNDJmYS1hOGNmLWE1NWIxOTk0NDI1MiJ9.PFYJsqzwaT7sZNxWhX5ImLeu3flkE_86YGoLXalTauA'}
       }
 
       this.$ajax.post(
-          "http://localhost:8090/sys/native/pay/1/1",param,config
+          "http://localhost:8090/sys/native/pay",param,config
         )
           .then(res=>{
         this.codeUrl=res.data.codeUrl;
